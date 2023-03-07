@@ -11,22 +11,21 @@
 </template>
 
 <script setup>
-const { data: response, error } = await useFetch(`/api/message`, {
-  method: 'POST',
-  body: {
-    message: 'test',
+const req = [
+  `/api/message`,
+  {
+    method: 'POST',
+    body: {
+      message: 'test',
+    },
   },
-});
+];
+const { data: response, error } = await useFetch(...req);
 
 const res = ref(null);
 const post = async () => {
   try {
-    res.value = await $fetch(`/api/message`, {
-      method: 'POST',
-      body: {
-        message: 'test',
-      },
-    });
+    res.value = await $fetch(...req);
     console.log(res);
   } catch (error) {
     res.value = error;
