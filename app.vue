@@ -1,14 +1,10 @@
 <template>
-  <nav>
-    <a href="/">/index</a>
-    <br />
-    <a href="/message">/message</a>
-  </nav>
-
+  <h1>useFetch works</h1>
   <div v-if="response">response: {{ response }}</div>
   <div v-else-if="error">error: {{ error }}</div>
   <div v-else>loading</div>
 
+  <h1>$fetch fails</h1>
   <button @click="post">POST</button>
   <br />
   {{ res }}
