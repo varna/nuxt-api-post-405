@@ -3,4 +3,12 @@ export default defineNuxtConfig({
   routeRules: {
     '/api/**': { cors: true },
   },
+  imports: {
+    dirs: ['models'],
+  },
+  nitro: {
+    imports: {
+      dirs: ['models'],
+    },
+  },
 });
