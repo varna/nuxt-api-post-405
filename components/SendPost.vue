@@ -10,6 +10,8 @@
   <div v-else>loading</div>
 
   <button @click="post">POST</button>
+  <br />
+  {{ res }}
 </template>
 
 <script setup>
@@ -20,13 +22,18 @@ const { data: response, error } = await useFetch(`/api/message`, {
   },
 });
 
+const res = ref(null);
 const post = async () => {
-  const res = await $fetch(`/api/message`, {
-    method: 'POST',
-    body: {
-      message: 'test',
-    },
-  });
-  console.log(res);
+  try {
+    res.value = await $fetch(`/api/message`, {
+      method: 'POST',
+      body: {
+        message: 'test',
+      },
+    });
+    console.log(res);
+  } catch (error) {
+    res.value = error;
+  }
 };
 </script>
