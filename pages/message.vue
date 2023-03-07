@@ -1,5 +1,5 @@
 <template>
-  <a href="/message">/message</a>
+  <a href="/">index</a>
   <div v-if="response">response: {{ response }}</div>
   <div v-else-if="error">error: {{ error }}</div>
   <div v-else>loading</div>
