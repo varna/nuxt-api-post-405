@@ -3,6 +3,6 @@ export default defineEventHandler((event) => {
   // return `POST: ${body.message}`;
   console.log(event.req.method);
   return readBody(event)
-    .then(({ message }) => `POST: ${message}`)
+    .then((body) => body)
     .catch(console.log);
 });

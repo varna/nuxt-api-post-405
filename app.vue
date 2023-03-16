@@ -25,7 +25,9 @@ const { data: response, error } = await useFetch(...req);
 const res = ref(null);
 const post = async () => {
   try {
-    res.value = await $fetch(...req);
+    res.value = await fetch(...req).then((r) => {
+      return r.json();
+    });
     console.log(res);
   } catch (error) {
     res.value = error;
