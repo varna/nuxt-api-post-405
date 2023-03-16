@@ -1,36 +1,35 @@
 <template>
-  <h1>useFetch works</h1>
-  <div v-if="response">response: {{ response }}</div>
-  <div v-else-if="error">error: {{ error }}</div>
-  <div v-else>loading</div>
-
-  <h1>$fetch fails</h1>
-  <button @click="post">POST</button>
+  <button @click="get">GET /message</button>
+  <button @click="post">POST /message</button>
+  <button @click="options">OPTIONS /message</button>
+  <button @click="any">GET /any</button>
   <br />
   {{ res }}
 </template>
 
 <script setup>
-const req = [
-  `/api/message`,
-  {
+const res = ref(null);
+const post = async () => {
+  res.value = await $fetch(`/api/message`, {
     method: 'POST',
     body: JSON.stringify({
       message: 'test',
     }),
-  },
-];
-const { data: response, error } = await useFetch(...req);
-
-const res = ref(null);
-const post = async () => {
-  try {
-    res.value = await fetch(...req).then((r) => {
-      return r.json();
-    });
-    console.log(res);
-  } catch (error) {
-    res.value = error;
-  }
+  });
+};
+const get = async () => {
+  res.value = await $fetch(`/api/message`, {
+    method: 'GET',
+  });
+};
+const options = async () => {
+  res.value = await $fetch(`/api/any`, {
+    method: 'OPTIONS',
+  });
+};
+const any = async () => {
+  res.value = await $fetch(`/api/any`, {
+    method: 'OPTIONS',
+  }).then(console.log);
 };
 </script>

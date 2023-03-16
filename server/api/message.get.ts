@@ -1,3 +1,3 @@
 export default defineEventHandler((event) => {
-  return { message: 'POST' };
+  return { message: 'GET' };
 });
