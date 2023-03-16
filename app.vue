@@ -14,7 +14,7 @@
 const req = [
   `/api/message`,
   {
-    method: 'post',
+    method: 'POST',
     body: JSON.stringify({
       message: 'test',
     }),
