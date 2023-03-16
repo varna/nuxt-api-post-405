@@ -15,9 +15,9 @@ const req = [
   `/api/message`,
   {
     method: 'POST',
-    body: {
+    body: JSON.stringify({
       message: 'test',
-    },
+    }),
   },
 ];
 const { data: response, error } = await useFetch(...req);
